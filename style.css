@@ -1,0 +1,166 @@
+body {
+    padding: 0;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: #222831;
+    font-size: 15px;
+    line-height: 1.5em;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+.float-left {
+    float: left;
+}
+
+main {
+    max-width: 800px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+main article {
+    clear: both;
+    background-color: #393e46;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+header>* {
+    margin: 20px 0;
+}
+
+a#title {
+    font-family: 'Suez One', serif;
+    font-size: 30px;
+    line-height: 35px;
+    padding: 0 10px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+}
+
+span.header-nav {
+    width: 35px;
+    height: 35px;
+    vertical-align: text-top;
+    font-size: 35px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cropper {
+    width: 25px;
+    height: 25px;
+    margin-top: 28px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.cropper img {
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+h1+div {
+    font-size: 16px;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 10px 0px;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+article ul {
+    list-style: circle outside;
+    padding: 0 16px;
+}
+
+article li {
+    margin-bottom: 0.5rem;
+    word-break: break-all;
+}
+
+article a:link {
+    color: #00fff5;
+}
+
+article img {
+    width: 100%;
+}
+
+blockquote {
+    padding: 16px;
+    margin: 16px 0 16px;
+    overflow-wrap: break-word;
+    background: #282b2e;
+}
+
+pre code.hljs {
+    padding: 16px;
+}
+
+pre code {
+    margin: 0;
+    border: none;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 1.5rem;
+}
+
+p code {
+    border: none;
+    background: #222831;
+}
+
+a.dummy-anchor {
+    display: block;
+    position: relative;
+    top: -80px;
+    visibility: hidden;
+}
+
+a.anchor {
+    text-decoration: none;
+}
+
+i.fa.fa-link {
+    font-size: 11pt;
+}
+
+article> :not(blockquote):not(pre) {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+@media screen and (min-width: 600px) {
+    main {
+        margin: 50px auto 40px;
+    }
+    article>:not(blockquote):not(pre) {
+        margin-left: 32px;
+        margin-right: 32px;
+    }
+    article>blockquote {
+        padding: 16px 32px;
+    }
+    pre code.hljs {
+        padding: 16px 32px;
+    }
+}
