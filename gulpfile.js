@@ -28,6 +28,7 @@ function generateBlog(callback) {
             './templates/base.html',
             f => ({
                 title: `${f.title} - pps5`,
+                description: f.description,
                 content: f.contents.toString()
             })
         ))

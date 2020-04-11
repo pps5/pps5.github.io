@@ -1,4 +1,5 @@
 ;; created: 2019/02/19
+;; description: @JvmOverloads 利用時にデフォルトスタイルが上書きされる View とその対処法
 
 # WebView と @JvmOverloads
 
