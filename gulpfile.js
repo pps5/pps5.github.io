@@ -8,7 +8,7 @@ const rename = require('gulp-rename');
 const del = require('del');
 const through = require('through2');
 
-const { markdown, blogPostMarkdown } = require('./lib/markdown');
+const { markdown, aboutMdRenderer, blogPostMarkdown } = require('./lib/markdown');
 const { meta } = require('./lib/meta');
 const { mustache, render } = require('./lib/mustache');
 
@@ -58,7 +58,10 @@ const generateBlogIndex = async (posts) => {
         './templates/index.html',
         {
             posts: obj,
-            about: markdown(await fs.readFile('./md/about.md', 'utf-8')),
+            about: markdown(
+                await fs.readFile('./md/about.md', 'utf-8'),
+                aboutMdRenderer()
+            ),
         }
     );
     const html = await render(
