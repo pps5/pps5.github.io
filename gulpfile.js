@@ -47,11 +47,13 @@ function generateBlog(callback) {
 }
 
 const generateBlogIndex = async (posts) => {
-    const obj = posts.map(p => ({
-        title: p.title,
-        date: p.createdDate,
-        url: `./blog/${path.basename(p.path)}`
-    }));
+    const obj = posts
+        .map(p => ({
+            title: p.title,
+            date: p.createdDate,
+            url: `./blog/${path.basename(p.path)}`
+        }))
+        .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
     const contents = await render(
         './templates/index.html',
         {
