@@ -40,5 +40,5 @@ println(word.trim { it <= ' ' })  // => '　word'
 
 ## 参考
 
-- [trim - Kotlin Programming Language](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim.html]
+- [trim - Kotlin Programming Language](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim.html)
 
