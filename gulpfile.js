@@ -31,7 +31,8 @@ function generateBlog(callback) {
                 title: `${f.title} - pps5`,
                 description: f.description,
                 relative_path: `blog/${path.basename(f.path)}`,
-                content: f.contents.toString()
+                content: f.contents.toString(),
+                is_index: false
             })
         ))
         .pipe(dest('./blog/'))
@@ -66,7 +67,7 @@ const generateBlogIndex = async (posts) => {
     );
     const html = await render(
         './templates/base.html',
-        { title: 'pps5', content: contents }
+        { title: 'pps5', content: contents, is_index: true, }
     );
     await fs.writeFile('./index.html', Buffer.from(html), 'utf-8');
 };
