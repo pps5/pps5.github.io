@@ -37,16 +37,16 @@
     </header>
 
     <article>
+      <h1>WebView と @JvmOverloads</h1>
+      <div>2019/02/19</div>
       
-              <h1>WebView と @JvmOverloads</h1>
-              <div>2019/02/19</div>
-              <h2>
-                <a name="-jvmoverloads-" class="dummy-anchor"></a>
-                <a class="anchor" href="#-jvmoverloads-">
-                  <i class="fa fa-link"></i>
-                </a>
-                @JvmOverloads とそれによって発生しうる問題
-              </h2><p>Android で Custom View を作ろうとすると、複数のコンストラクタを実装する必要がありますが、Kotlin を使用している場合は <code>@JvmOverloads</code> アノテーションを使うことで簡単に作成することができます。</p>
+          <h2>
+            <a name="@JvmOverloads-とそれによって発生しうる問題" class="dummy-anchor"></a>
+            <a class="anchor" href="#@JvmOverloads-とそれによって発生しうる問題">
+              <i class="fa fa-link"></i>
+            </a>
+            @JvmOverloads とそれによって発生しうる問題
+          </h2><p>Android で Custom View を作ろうとすると、複数のコンストラクタを実装する必要がありますが、Kotlin を使用している場合は <code>@JvmOverloads</code> アノテーションを使うことで簡単に作成することができます。</p>
 <pre><code class="kotlin">class MyCustomView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -56,13 +56,13 @@
 <p>その一つは<a href="https://qiita.com/kwhrstr1206/items/93827190a535b11bd064">Kotlinでcustom viewを実装する時の注意点 - Qiita</a>でも書かれているように EditText です。<code>defStyleAttr</code> が0で初期化されることにより、Context と AttributeSet を受け取るコンストラクタで指定されているデフォルトのスタイルが適用されず、意図した動作となりません。こういった View はそれなりに存在しており、少し古い記事になりますが<a href="http://y-anz-m.blogspot.com/2012/05/android.html">Y.A.M の 雑記帳: Android　スタイルメモ</a>でその一覧が示されています。</p>
 <p>このようなViewに遭遇したとき、実際にどのように調査するかの備忘録です。</p>
 
-              <h2>
-                <a name="-" class="dummy-anchor"></a>
-                <a class="anchor" href="#-">
-                  <i class="fa fa-link"></i>
-                </a>
-                原因調査
-              </h2><p>今回私が遭遇した View は WebView なのですが、<code>@JvmOverloads</code> によりデフォルトスタイルが適用されない場合、表示した Web ページのテキストボックスをクリックしてもキーボードが表示されません。</p>
+          <h2>
+            <a name="原因調査" class="dummy-anchor"></a>
+            <a class="anchor" href="#原因調査">
+              <i class="fa fa-link"></i>
+            </a>
+            原因調査
+          </h2><p>今回私が遭遇した View は WebView なのですが、<code>@JvmOverloads</code> によりデフォルトスタイルが適用されない場合、表示した Web ページのテキストボックスをクリックしてもキーボードが表示されません。</p>
 <p>非公式ではありますが、有志の方が公開している<a href="https://sites.google.com/site/devcollaboration/codesearch">Androidソースコード検索サービス - Developer Collaboration Project</a>というものがあります。</p>
 <pre><code class="java">public WebView(Context context, AttributeSet attrs) {
     this(context, attrs, com.android.internal.R.attr.webViewStyle);
@@ -77,21 +77,21 @@
 &lt;/style&gt;</code></pre>
 <p><a href="https://search.siprop.org/android-8.0.0_r1.0/xref/frameworks/base/core/res/res/values/styles.xml#699">該当箇所</a></p>
 
-              <h2>
-                <a name="-view-" class="dummy-anchor"></a>
-                <a class="anchor" href="#-view-">
-                  <i class="fa fa-link"></i>
-                </a>
-                問題が発生する View への対処
-              </h2><p>実際にこういった View にどうアプローチするかを考えると、3引数（あるいは4引数）のコンストラクタを使う機会はそれほどないはずなので、2引数で <code>@JvmOverloads</code> を使うのが一番楽だと思います。そこで問題が起きた際には改めて複数のコンストラクタを生成する、と言った形でも問題ないでしょう。</p>
+          <h2>
+            <a name="問題が発生する-View-への対処" class="dummy-anchor"></a>
+            <a class="anchor" href="#問題が発生する-View-への対処">
+              <i class="fa fa-link"></i>
+            </a>
+            問題が発生する View への対処
+          </h2><p>実際にこういった View にどうアプローチするかを考えると、3引数（あるいは4引数）のコンストラクタを使う機会はそれほどないはずなので、2引数で <code>@JvmOverloads</code> を使うのが一番楽だと思います。そこで問題が起きた際には改めて複数のコンストラクタを生成する、と言った形でも問題ないでしょう。</p>
 
-              <h2>
-                <a name="-" class="dummy-anchor"></a>
-                <a class="anchor" href="#-">
-                  <i class="fa fa-link"></i>
-                </a>
-                参考
-              </h2><ul>
+          <h2>
+            <a name="参考" class="dummy-anchor"></a>
+            <a class="anchor" href="#参考">
+              <i class="fa fa-link"></i>
+            </a>
+            参考
+          </h2><ul>
 <li><a href="https://qiita.com/kwhrstr1206/items/93827190a535b11bd064">Kotlinでcustom viewを実装する時の注意点 - Qiita</a></li>
 <li><a href="http://y-anz-m.blogspot.com/2012/05/android.html">Y.A.M の 雑記帳: Android　スタイルメモ</a></li>
 <li><a href="https://sites.google.com/site/devcollaboration/codesearch">Androidソースコード検索サービス - Developer Collaboration Project</a></li>

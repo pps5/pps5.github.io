@@ -1,7 +1,12 @@
-;; created: 2018/03/15
-;; description: Java とは異なる Kotlin の trim
-
-# Kotlin における String#trim()
+---
+title: "Kotlin における String#trim()"
+emoji: "😸"
+type: "tech"
+topics: ["android"]
+published: true
+created: 2018/03/15
+description: Java とは異なる Kotlin の trim
+---
 
 ## Java との挙動の違い
 Kotlin における `String#trim()` は Java のそれとはやや異なった実装がされています。

@@ -28,7 +28,8 @@ function generateBlog(callback) {
         .pipe(mustache(
             './templates/base.html',
             f => ({
-                title: `${f.title} - pps5`,
+                title: `${f.title}`,
+                date: f.createdDate,
                 description: f.description,
                 relative_path: `blog/${path.basename(f.path)}`,
                 content: f.contents.toString(),

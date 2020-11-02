@@ -1,7 +1,12 @@
-;; created: 2020/08/17
-;; description: Fragment の getArguments, requireArguments の使い分けについて
-
-# Fragment の getArguments, requireArguments の使い分けについて
+---
+title: "Fragment の getArguments, requireArguments の使い分けについて"
+emoji: "😸"
+type: "tech"
+topics: ["android"]
+published: true
+created: 2020/08/17
+description: Fragment の getArguments, requireArguments の使い分けについて
+---
 
 ## それぞれのメソッドの違い
 Fragment に何か値を渡したいとき、今であれば Jetpack Navigation と SafeArgs を使うのが一番簡単で確実だと思いますが、古いプロジェクトだと必ずしもそうはいかないため今まで通りの実装をしなければなりません。

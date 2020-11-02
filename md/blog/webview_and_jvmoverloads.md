@@ -1,7 +1,12 @@
-;; created: 2019/02/19
-;; description: @JvmOverloads 利用時にデフォルトスタイルが上書きされる View とその対処法
-
-# WebView と @JvmOverloads
+---
+title: "WebView と @JvmOverloads"
+emoji: "😸"
+type: "tech"
+topics: ["android"]
+published: true
+created: 2019/02/19
+description: @JvmOverloads 利用時にデフォルトスタイルが上書きされる View とその対処法
+---
 
 ## @JvmOverloads とそれによって発生しうる問題
 Android で Custom View を作ろうとすると、複数のコンストラクタを実装する必要がありますが、Kotlin を使用している場合は `@JvmOverloads` アノテーションを使うことで簡単に作成することができます。

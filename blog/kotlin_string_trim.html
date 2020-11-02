@@ -37,16 +37,16 @@
     </header>
 
     <article>
+      <h1>Kotlin における String#trim()</h1>
+      <div>2018/03/15</div>
       
-              <h1>Kotlin における String#trim()</h1>
-              <div>2018/03/15</div>
-              <h2>
-                <a name="java-" class="dummy-anchor"></a>
-                <a class="anchor" href="#java-">
-                  <i class="fa fa-link"></i>
-                </a>
-                Java との挙動の違い
-              </h2><p>Kotlin における <code>String#trim()</code> は Java のそれとはやや異なった実装がされています。</p>
+          <h2>
+            <a name="Java-との挙動の違い" class="dummy-anchor"></a>
+            <a class="anchor" href="#Java-との挙動の違い">
+              <i class="fa fa-link"></i>
+            </a>
+            Java との挙動の違い
+          </h2><p>Kotlin における <code>String#trim()</code> は Java のそれとはやや異なった実装がされています。</p>
 <p>Java では全角スペースは削除されませんが、Kotlin では全角スペースも同様に削除されます。</p>
 <pre><code class="java">// Java
 String word = &quot;　word　&quot;;  // 全角スペースで囲われた文字列
@@ -58,24 +58,24 @@ println(&quot;&#39;${word.trim()}&#39;&quot;)  // =&gt; &#39;word&#39;</code></p
 このメソッドは Unicode のコードポイントで判別しているため、Space Separator カテゴリに含まれる全角スペースは trim メソッドで消されてしまいます。</p>
 <p>一方で Java はカテゴリを考慮せず、単純に u0020 以下のものを削除するので、全角スペース(u3000) は削除されません。</p>
 
-              <h2>
-                <a name="kotlin-java-" class="dummy-anchor"></a>
-                <a class="anchor" href="#kotlin-java-">
-                  <i class="fa fa-link"></i>
-                </a>
-                Kotlin で Java と同じ挙動を目指す
-              </h2><p>Kotlin の trim は <code>predicate</code> を渡すことができるため、そこで Java と同様の処理を行います。</p>
+          <h2>
+            <a name="Kotlin-で-Java-と同じ挙動を目指す" class="dummy-anchor"></a>
+            <a class="anchor" href="#Kotlin-で-Java-と同じ挙動を目指す">
+              <i class="fa fa-link"></i>
+            </a>
+            Kotlin で Java と同じ挙動を目指す
+          </h2><p>Kotlin の trim は <code>predicate</code> を渡すことができるため、そこで Java と同様の処理を行います。</p>
 <pre><code class="kotlin">val word = &quot;　word &quot;  // 全角スペースと半角スペースで囲われた文字列
 println(word.trim { it &lt;= &#39; &#39; })  // =&gt; &#39;　word&#39;</code></pre>
 <p>無理やり <code>java.lang.String</code> クラスへキャストすることでも可能ですが、Kotlinでは推奨されない方法なので、<code>predicate</code> を渡す方法が良いでしょう。</p>
 
-              <h2>
-                <a name="-" class="dummy-anchor"></a>
-                <a class="anchor" href="#-">
-                  <i class="fa fa-link"></i>
-                </a>
-                参考
-              </h2><ul>
+          <h2>
+            <a name="参考" class="dummy-anchor"></a>
+            <a class="anchor" href="#参考">
+              <i class="fa fa-link"></i>
+            </a>
+            参考
+          </h2><ul>
 <li><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim.html">trim - Kotlin Programming Language</a></li>
 </ul>
 

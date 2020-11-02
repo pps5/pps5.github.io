@@ -37,16 +37,16 @@
     </header>
 
     <article>
+      <h1>Fragment の getArguments, requireArguments の使い分けについて</h1>
+      <div>2020/08/17</div>
       
-              <h1>Fragment の getArguments, requireArguments の使い分けについて</h1>
-              <div>2020/08/17</div>
-              <h2>
-                <a name="-" class="dummy-anchor"></a>
-                <a class="anchor" href="#-">
-                  <i class="fa fa-link"></i>
-                </a>
-                それぞれのメソッドの違い
-              </h2><p>Fragment に何か値を渡したいとき、今であれば Jetpack Navigation と SafeArgs を使うのが一番簡単で確実だと思いますが、古いプロジェクトだと必ずしもそうはいかないため今まで通りの実装をしなければなりません。</p>
+          <h2>
+            <a name="それぞれのメソッドの違い" class="dummy-anchor"></a>
+            <a class="anchor" href="#それぞれのメソッドの違い">
+              <i class="fa fa-link"></i>
+            </a>
+            それぞれのメソッドの違い
+          </h2><p>Fragment に何か値を渡したいとき、今であれば Jetpack Navigation と SafeArgs を使うのが一番簡単で確実だと思いますが、古いプロジェクトだと必ずしもそうはいかないため今まで通りの実装をしなければなりません。</p>
 <p>newInstance を利用した実装が一般的で、 Fragment を新しく作成するときは以下のように実装されたメソッドを使用します。</p>
 <pre><code class="kotlin">class SampleFragment : Fragment() {
 
@@ -75,13 +75,13 @@ doSomething(value)</code></pre>
 </ul>
 <p>といった挙動になります。</p>
 
-              <h2>
-                <a name="-" class="dummy-anchor"></a>
-                <a class="anchor" href="#-">
-                  <i class="fa fa-link"></i>
-                </a>
-                どう使い分けるか
-              </h2><p>基本的に全て requireArguments で問題ないはずです。</p>
+          <h2>
+            <a name="どう使い分けるか" class="dummy-anchor"></a>
+            <a class="anchor" href="#どう使い分けるか">
+              <i class="fa fa-link"></i>
+            </a>
+            どう使い分けるか
+          </h2><p>基本的に全て requireArguments で問題ないはずです。</p>
 <p>Fragment に何か値を渡すとき、それは Fragment で必ず使う値であることがほとんどです。たとえば、ある日にちのデータを表示する画面であれば日付は必要でしょうし、カテゴリに応じた内容を表示するならばカテゴリは必須であるはずです。</p>
 <p>null チェックをして、データがあったときだけ画面を構築するようにしてしまうと、必要なデータがない異常な状態であっても正常に動作しているかのように見えてしまいます。Fragmentの使い方を間違っていることがわかるように、誤った初期化をしていれば即座にクラッシュさせたほうが開発中に気づきやすくなります。</p>
 <p>値が渡されないことが想定される場合でも、必ず newInstance で arguments をセットすればそれで良いと思います。</p>
@@ -106,13 +106,13 @@ fun newInstance(value: Int?) {
 }</code></pre>
 <p>これで少なくとも newInstance 経由でインスタンスを生成していれば getArguments が null になることがなくなります。そして requireArguments を使用していれば、たとえ誤って直接コンストラクタで生成したとしても例外が発生するため開発中に検出できるようになります。</p>
 
-              <h2>
-                <a name="-" class="dummy-anchor"></a>
-                <a class="anchor" href="#-">
-                  <i class="fa fa-link"></i>
-                </a>
-                まとめ
-              </h2><p>なんだかんだ考えた結果、自分の中では全部 requireArguments で良いという結論に至りました。もしここに記載したもの以外で何かお気づきの点がありましたら、<a href="https://twitter.com/Inb_J">@Inb_J</a> までご連絡ください。</p>
+          <h2>
+            <a name="まとめ" class="dummy-anchor"></a>
+            <a class="anchor" href="#まとめ">
+              <i class="fa fa-link"></i>
+            </a>
+            まとめ
+          </h2><p>なんだかんだ考えた結果、自分の中では全部 requireArguments で良いという結論に至りました。もしここに記載したもの以外で何かお気づきの点がありましたら、<a href="https://twitter.com/Inb_J">@Inb_J</a> までご連絡ください。</p>
 <p>requireArguments の実装を見ると、例外を送出しているため実開発で使用するのに戸惑う人もいるかもしれませんが、例外は必ずしも悪いものではなく、開発段階で不正な状態を発見するのにも役立ちます。特に Android では Android 固有のライフサイクルによって、静的解析などで厳密にチェックすることも難しいこともあるため、こういった形で検証できるようにしたほうが良いでしょう。</p>
 
     </article>
