@@ -1,11 +1,11 @@
 ---
-title: "WebView と @JvmOverloads"
+title: "WebView と JvmOverloads"
 emoji: "😸"
 type: "tech"
 topics: ["android"]
 published: true
 created: 2019/02/19
-description: @JvmOverloads 利用時にデフォルトスタイルが上書きされる View とその対処法
+description: JvmOverloads 利用時にデフォルトスタイルが上書きされる View とその対処法
 ---
 
 ## @JvmOverloads とそれによって発生しうる問題
