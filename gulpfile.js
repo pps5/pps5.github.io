@@ -2,6 +2,7 @@
 
 const fs = require('fs').promises;
 const path = require('path');
+const { exec } = require('child_process');
 
 const { src, dest, parallel, series } = require('gulp');
 const rename = require('gulp-rename');
@@ -73,8 +74,17 @@ const generateBlogIndex = async (posts) => {
     await fs.writeFile('./index.html', Buffer.from(html), 'utf-8');
 };
 
+const generateZennArticles = (callback) => {
+    exec('git checkout zenn.dev; git merge master; cp md/blog/*.md articles/.',
+        (err, stdout, stderr) => {
+            console.log(err);
+            callback();
+        });
+}
+
 exports.clean = clean;
 exports.blog = generateBlog;
+exports.zenn = generateZennArticles;
 exports.default = series(
     clean,
     generateBlog
