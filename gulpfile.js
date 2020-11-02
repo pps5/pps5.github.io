@@ -75,8 +75,13 @@ const generateBlogIndex = async (posts) => {
 };
 
 const generateZennArticles = (callback) => {
-    exec('git checkout zenn.dev; git merge master; cp md/blog/*.md articles/.',
-        (err, stdout, stderr) => {
+    exec(`git checkout zenn.dev;
+        git merge master;
+        cp md/blog/*.md articles/.;
+        git commit -m "update";
+        git push;
+        git checkout -;
+        `, (err, stdout, stderr) => {
             console.log(err);
             callback();
         });
