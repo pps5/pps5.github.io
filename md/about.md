@@ -1,5 +1,0 @@
-- Naoki Nakajima
-- Android Developer
-- [note](https://note.com/pps5)
-- [GitHub](https://github.com/pps5)
-- [LinkedIn](https://www.linkedin.com/in/naoki-nakajima-2115b2130/)
