@@ -74,23 +74,8 @@ const generateBlogIndex = async (posts) => {
     await fs.writeFile('./index.html', Buffer.from(html), 'utf-8');
 };
 
-const generateZennArticles = (callback) => {
-    exec(`git checkout zenn;
-        git merge master;
-        cp md/blog/*.md articles/.;
-        git add articles;
-        git commit -m "update";
-        git push;
-        git checkout -;
-        `, (err, stdout, stderr) => {
-            console.log(err);
-            callback();
-        });
-}
-
 exports.clean = clean;
 exports.blog = generateBlog;
-exports.zenn = generateZennArticles;
 exports.default = series(
     clean,
     generateBlog
